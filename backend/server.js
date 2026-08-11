@@ -11,11 +11,11 @@ app.use(express.json());
 
 app.use('/api/products', productRoutes);
     
+const PORT = process.env.PORT || 5500;
 
 
-
-app.listen(5500, async () => {
-    console.log('Server is running on port http://localhost:5500');
+app.listen(PORT, async () => {
+    console.log(`Server is running on port http://localhost:${PORT}`);
     await connectDB();
 });
 
