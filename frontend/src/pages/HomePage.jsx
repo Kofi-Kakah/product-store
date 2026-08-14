@@ -15,24 +15,26 @@ export default function HomePage() {
   return (
     <Container maxW="container.xl" py={12}>
       <VStack>
-      <Text fontSize={"30px"} fontWeight={"bold"} textAlign={"center"} >
+        <Text fontSize={"30px"} fontWeight={"bold"} textAlign={"center"}>
           Current Products
         </Text>
 
-         <SimpleGrid minChildWidth="sm" gap="40px" w={"full"}>
-           {products.map((product) => (
-            <ProductCard key={product._id} product={product} />
-           ))}
+        {products.length === 0 ? (
+          <Text fontSize="xl" textAlign={"center"} fontWeight="bold" color="red.300">
+            No products found 🤷‍♀️ {" "}
+            <Link to={"/create"}>
+              <Text as="span" _hover={{ textDecoration: "underline" }} color="blue.500">
+                Create a product
+              </Text>
+            </Link>
+          </Text>
+        ) : (
+          <SimpleGrid minChildWidth="sm" gap="40px" w={"full"}>
+            {products.map((product) => (
+              <ProductCard key={product._id} product={product} />
+            ))}
           </SimpleGrid>
-
-        <Text fontSize="xl" textAlign={"center"} fontWeight="bold" color="red.300">
-          No products found 🤷‍♀️ {" "}
-          <Link to={"/create"}>
-            <Text as="span" _hover={{ textDecoration: "underline"}} color="blue.500">
-              Create a product
-            </Text>
-          </Link>
-        </Text>
+        )}
       </VStack>
     </Container>
   );
