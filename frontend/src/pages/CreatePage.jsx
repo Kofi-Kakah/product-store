@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Box, Button, Container, Heading, Input,  VStack } from "@chakra-ui/react"
+import { MdAdd } from "react-icons/md"
 import {  toaster } from "../components/ui/toaster"
 import { useColorModeValue } from "../components/ui/color-mode"
 import { useProductStore } from "../store/product";
@@ -45,8 +46,8 @@ export default function CreatePage() {
             <Input placeholder="Product Price" name="price" type="number" value={newProduct.price} onChange={(e) => setNewProduct({...newProduct, price:e.target.value})}/>
             <Input placeholder="Product Image" name="image" value={newProduct.image} onChange={(e) => setNewProduct({...newProduct, image:e.target.value})}/>
 
-            <Button colorScheme="gray" onClick={handleAddProduct} w="full">
-              Add Product
+            <Button colorScheme="gray" onClick={handleAddProduct} w="full" size="md">
+                <MdAdd size={20} /> Add Product
             </Button>
           </VStack>
         </Box>

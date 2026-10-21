@@ -1,8 +1,8 @@
-import { Container, Button, Flex, Text, HStack } from "@chakra-ui/react"
+import { Container, Button, Flex, Text, HStack, IconButton } from "@chakra-ui/react"
 import { Link } from "react-router-dom"
 import { useColorMode } from "../components/ui/color-mode";
-import { IoMoon } from "react-icons/io5";
-import { LuSun } from "react-icons/lu";
+import { IoMoon, IoSunny } from "react-icons/io5";
+import { MdHome, MdAdd } from "react-icons/md";
 
 
 function Navbar() { 
@@ -15,22 +15,22 @@ function Navbar() {
           Product Store
         </Text>
         <Flex gap={4} mt={{ base: 2, sm: 0 }}>
-          <Link to="/">
-            <Button colorScheme="teal" variant="solid">
-              Home
-            </Button>
-          </Link>
-              <Link to="/create">
-            <Button colorScheme="teal" variant="outline">
-              Create Product
-            </Button>
-          </Link>
+            <Link to="/">
+                <Button colorScheme="teal" variant="solid" size="sm">
+                    <MdHome size={18} /> Home
+                </Button>
+            </Link>
+            <Link to="/create">
+                <Button colorScheme="teal" variant="outline" size="sm">
+                    <MdAdd size={18} /> Create Product
+                </Button>
+            </Link>
         </Flex>
 
         <HStack spacing={2} alignItems="center">
-          <Button onClick={toggleColorMode}>
-            {colorMode === "light" ? <IoMoon /> : <LuSun />}
-          </Button>
+            <IconButton onClick={toggleColorMode} aria-label="Toggle color mode" variant="ghost" size="sm" color="gray.600" _dark={{ color: "gray.300" }}>
+                {colorMode === "light" ? <IoMoon size={20} /> : <IoSunny size={20} />}
+            </IconButton>
         </HStack>
       </Flex>
     </Container>

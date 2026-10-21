@@ -64,19 +64,23 @@ const ProductCard = ({ product }) => {
 				</Text>
 
 				<HStack spacing={2}>
-					<IconButton aria-label="edit" icon={<AiOutlineEdit />} onClick={() => { setUpdatedProduct(product); setIsEditing(true); }} colorScheme='blue' />
+				<IconButton aria-label="edit" colorScheme='blue' size='sm' onClick={() => { setUpdatedProduct(product); setIsEditing(true); }}>
+					<AiOutlineEdit size={20} />
+				</IconButton>
 
-					<IconButton
-						aria-label="delete"
-						icon={<AiOutlineDelete />}
-						onClick={async () => {
-							const confirmed = window.confirm('Delete this product?');
-							if (!confirmed) return;
-							await handleDeleteProduct(product._id);
-						}}
-						colorScheme='red'
-					/>
-				</HStack>
+				<IconButton
+					aria-label="delete"
+					colorScheme='red'
+					size='sm'
+					onClick={async () => {
+						const confirmed = window.confirm('Delete this product?');
+						if (!confirmed) return;
+						await handleDeleteProduct(product._id);
+					}}
+				>
+					<AiOutlineDelete size={20} />
+				</IconButton>
+			</HStack>
 			</Box>
 
 			{isEditing && (
